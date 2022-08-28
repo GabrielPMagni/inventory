@@ -1,4 +1,5 @@
 import { Database } from "../database";
+import { insertOrUpdateUserProps } from "./types";
 
 export class User extends Database {
     async getUserByPk(id: number) {
@@ -19,6 +20,34 @@ export class User extends Database {
     }
 
     async getAllUsers() {
-        return await this.getConnection().users.findMany()
+        return await this.getConnection().users.findMany();
+    }
+
+    async deleteUser(id: number) {
+        return await this.getConnection().users.delete({
+            where: {
+                id
+            }
+        });
+    }
+
+    async insertOrUpdateUser({ display_name, password, role, user, id }: insertOrUpdateUserProps) {
+        return await this.getConnection().users.upsert({
+            create: {
+                password,
+                role,
+                user,
+                display_name,
+            },
+            update: {
+                password,
+                role,
+                user,
+                display_name,
+            },
+            where: {
+                id
+            }
+        });
     }
 }

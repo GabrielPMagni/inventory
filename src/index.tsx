@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { LoginForm } from './components/Login';
+import { MainContainer } from './components/MainContainer';
+import { SwitchLanguage } from './components/SwitchLanguage';
 import AuthContextProvider from './context/auth';
+import I18NProvider from './context/i18n';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
@@ -10,10 +14,16 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <App />
+    <I18NProvider defaultLanguage='ptBR'>
+      <MainContainer>
+       <SwitchLanguage />
+        <LoginForm></LoginForm>
+        <AuthContextProvider>
+          <App />
 
-    </AuthContextProvider>
+        </AuthContextProvider>
+      </MainContainer>
+    </I18NProvider>
   </React.StrictMode>
 );
 

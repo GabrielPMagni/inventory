@@ -1,16 +1,26 @@
-import { createContext, ReactNode } from "react";
+import { createContext, Dispatch, ReactNode, useState } from "react";
 
-export const AuthContext = createContext({});
-AuthContext.displayName = 'AuthContext';
 
-type ContextPropsType = {
+interface ContextProps {
+    userName?: string,
+    setUserName: Dispatch<string>,
+}
+
+type ContextInputPropsType = {
     children: ReactNode
 }
 
-export default function AuthContextProvider({ children }: ContextPropsType) {
+export const AuthContext = createContext({} as ContextProps);
+AuthContext.displayName = 'AuthContext';
+
+export default function AuthContextProvider({ children }: ContextInputPropsType) {
+    const [ userName, setUserName ] = useState<string>();
     return (
         <AuthContext.Provider
-            value={{}}
+            value={{
+                userName,
+                setUserName
+            }}
         >
             { children }
         </AuthContext.Provider>

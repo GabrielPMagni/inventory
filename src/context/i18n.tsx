@@ -19,12 +19,7 @@ export default function I18NProvider({ children, defaultLanguage }: ContextProps
     const [ language, setLanguage ] = useState<string>(defaultLanguage);
 
     function translate(keyName: string) {        
-        switch (language) {
-            case 'en':
-                return i18n.en.find(item => item.key === keyName)?.value ?? '';
-            case 'ptBR':
-                return i18n.ptBR.find(item => item.key === keyName)?.value ?? '';
-        }        
+        return i18n.find(lang => lang.key === language)?.value.find(item => item.key === keyName)?.value ?? '';
     }
 
     return (

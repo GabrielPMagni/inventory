@@ -6,15 +6,21 @@ export const colors = {
     fontColor: '#00000'
 }
 
-export const i18n = {
-    ptBR: [
-        { key: 'requestLoginUsername', value: 'Informe seu usuário'},
-        { key: 'requestLoginPassword', value: 'Informe sua senha'},
-        { key: 'submitLogin', value: 'Entrar'},
-    ],
-    en: [
-        { key: 'requestLoginUsername', value: 'Enter your username'},
-        { key: 'requestLoginPassword', value: 'Enter your passowrd'},
-        { key: 'submitLogin', value: 'Login'},
-    ]
-}
+export const i18n = [
+    {
+        key: 'ptBR',
+        value: [
+            { key: 'requestLoginUsername', value: 'Informe seu usuário'},
+            { key: 'requestLoginPassword', value: 'Informe sua senha'},
+            { key: 'submitLogin', value: 'Entrar'},
+        ] 
+    },
+    {
+        key: 'en',
+        value: [
+            { key: 'requestLoginUsername', value: 'Enter your username'},
+            { key: 'requestLoginPassword', value: 'Enter your passowrd'},
+            { key: 'submitLogin', value: 'Login'},
+        ]
+    }
+]
